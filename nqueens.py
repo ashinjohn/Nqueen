@@ -8,7 +8,9 @@
 # 20 21 22 #
 
 board=[]
-bs=5   #boardsize
+bs=raw_input("Input board size ")
+bs=int(bs)
+#bs=3   #boardsize
 
 #Make Board
 for i in range(0,bs):
@@ -69,7 +71,7 @@ def issafe(row,column):
 #showboard()
 def putqueen(queen,row,column):
     global board
-    if row>bs or column> bs:
+    if row>bs or column+1> bs:
         return False
     else:
         if issafe(row,column):
