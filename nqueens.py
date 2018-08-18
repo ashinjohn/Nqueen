@@ -75,7 +75,8 @@ def putqueen(column):
 
     #counting if all queens are placed
     if column>=bs:
-        return True
+        print("---------------")
+        showboard()
 
     #putting row wise
     for row in range (0,bs):
@@ -90,4 +91,3 @@ def putqueen(column):
 
 #Initialising 
 putqueen(0)
-showboard()
