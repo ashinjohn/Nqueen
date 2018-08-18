@@ -10,7 +10,7 @@
 board=[]
 bs=raw_input("Input board size ")
 bs=int(bs)
-#bs=3   #boardsize
+#bs=10   #boardsize
 
 #Make Board
 for i in range(0,bs):
@@ -69,20 +69,25 @@ def issafe(row,column):
     return True
 #issafe(10,10)
 #showboard()
-def putqueen(queen,row,column):
+
+def putqueen(column):
     global board
-    if row>bs or column+1> bs:
-        return False
-    else:
+
+    #counting if all queens are placed
+    if column>=bs:
+        return True
+
+    #putting row wise
+    for row in range (0,bs):
         if issafe(row,column):
-            board[row][column]=queen;
-            return True
-        else:
+            board[row][column]=1;
+            #putting columnwise
+            if putqueen(column+1):
+                return True
             board[row][column]=0;
-            putqueen(queen,row,column+1)
+                    
+    return False
 
-#number of queens will be board size -1 
-for queen in range(1,bs+1):
-    putqueen(queen,queen-1,0)
-
+#Initialising 
+putqueen(0)
 showboard()
